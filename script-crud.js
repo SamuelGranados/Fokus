@@ -1,15 +1,12 @@
 const taskListContainer = document.querySelector('.app__section-task-list');
+const formTask = document.querySelector('.app__form-add-task');
+const toggleFormTaskBtn = document.querySelector('.app__button--add-task');
+const formLabel = document.querySelector('.app__form-label');
+const textArea = document.querySelector('.app__form-textarea');
+const cancelFormTaskBtn = document.querySelector('.app__form-footer__button--cancel');
+const btnCancelar = document.querySelector('.app__form-footer__button--cancel')
 
-let tarefas = [
-  {
-  descricao: 'Tarefa Concluida',
-  concluida: true
-  },
-  {
-    descricao: 'Tarefa Pendente',
-    concluida: false
-  }
-]
+let tarefas = []
 
 const taskIconSvg = `
 <svg class="app__section-task-icon-status" width="24" height="24" viewBox="0 0 24 24"
@@ -18,8 +15,13 @@ const taskIconSvg = `
     <path
         d="M9 16.1719L19.5938 5.57812L21 6.98438L9 18.9844L3.42188 13.4062L4.82812 12L9 16.1719Z"
         fill="#01080E" />
-</
+</svg>
 `
+
+const limparForm = () => {
+  textArea.value = ''
+  formTask.classList.add('hidden')
+}
 
 function createTask(tarefa) {
   const li = document.createElement('li')
@@ -38,3 +40,35 @@ function createTask(tarefa) {
 
   return li
 }
+
+tarefas.forEach(task => {
+  const taskItem = createTask(task)
+  taskListContainer.appendChild(taskItem)
+})
+
+cancelFormTaskBtn.addEventListener('click', () => {
+  formTask.classList.add('hidden')
+})
+
+btnCancelar.addEventListener('click', limparForm)
+
+toggleFormTaskBtn.addEventListener('click', () => {
+  formLabel.textContent = 'Adicionando tarefa'
+  formTask.classList.toggle('hidden')
+})
+
+formTask.addEventListener('submit', (evento) => {
+  evento.preventDefault()
+  const task = {
+    descricao: textArea.value,
+    concluida: false 
+  }
+  tarefas.push(task)
+  const taskItem = createTask(task)
+  taskListContainer.appendChild(taskItem)
+
+  limparForm()
+})
+
+localStorage.setItem('quantidade', 10)
+console.log(localStorage.getItem('quantidade'))
