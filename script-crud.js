@@ -61,7 +61,7 @@ function createTask(tarefa) {
   const button = document.createElement('button')
 
   li.onclick = () => {
-    selecioneTarefa(tarefa, li)
+    selecionaTarefa(tarefa, li)
   }
 
   svgIcon.addEventListener('click', (event) => {
