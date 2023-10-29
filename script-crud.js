@@ -157,7 +157,7 @@ formTask.addEventListener('submit', (evento) => {
   limparForm()
 })
 
-document.addEventListener('tarefaFinalizada', function (e) {
+document.addEventListener('click', function (e) {
   if(tarefaSelecionada) {
     tarefaSelecionada.concluida = true
     itemTarefaSelecionada.classList.add('app__section-task-list-item-complete')
