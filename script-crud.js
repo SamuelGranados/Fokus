@@ -95,9 +95,6 @@ function createTask(tarefa) {
     selecionaTarefa(tarefa, li)
   }
 
-  
-  
-
   svgIcon.addEventListener('click', (event) => {
     if(tarefa==tarefaSelecionada) {
        event.stopPropagation()
