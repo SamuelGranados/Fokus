@@ -18,7 +18,7 @@ const musicaTempoFinalizado = new Audio('/sons/beep.mp3');
 musica.loop = true
 
 let intervaloID = null
-let tempoDecorridoEmSegundos = 5
+let tempoDecorridoEmSegundos = 1500
 
 musicaFocoInput.addEventListener('change', () => {
   if(musica.paused) {
@@ -29,7 +29,7 @@ musicaFocoInput.addEventListener('change', () => {
 })
 
 focoBt.addEventListener('click', () => {
-  tempoDecorridoEmSegundos = 5
+  tempoDecorridoEmSegundos = 1500
   alterarContexto('foco')
   focoBt.classList.add('active')
 })
